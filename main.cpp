@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <sys/timeb.h>
 
-#include "framebuffer.hpp"
+#include "asciilibur.hpp"
 
 constexpr const uint8_t k_width = 120;
 constexpr const uint8_t k_height = 30;
