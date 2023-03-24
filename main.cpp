@@ -22,8 +22,6 @@ bool on_update(double delta_time) {
 }
 
 void on_draw(asciilibur::FrameBuffer& buffer) {
-
-
     // Draw something into the frame buffer
     buffer.draw(asciilibur::Char::SMILE_LIGHT, 10, 10);
     buffer.draw(asciilibur::Char::SMILE_DARK, 11, 10);
@@ -41,6 +39,8 @@ void on_draw(asciilibur::FrameBuffer& buffer) {
     };
 
     buffer.draw_sprite(test_sprite_2.data(), test_sprite_2.size(), 20, 10);
+
+    buffer.draw_sprite("Howdy!", 22, 9);
 }
 
 int main() {
