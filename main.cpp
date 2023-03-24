@@ -8,7 +8,6 @@ constexpr const uint8_t k_width = 120;
 constexpr const uint8_t k_height = 30;
 
 bool on_update(double delta_time) {
-    // TODO: defined cross-platform keycodes
     if (asciilibur::input::get_key_state(VK_ESCAPE)) {
         // Quit game
         return false;
