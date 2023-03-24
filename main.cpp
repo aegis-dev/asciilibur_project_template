@@ -2,6 +2,8 @@
 #include <windows.h>
 #include <cstdint>
 
+#include <vector>
+
 #include "asciilibur.hpp"
 
 constexpr const uint8_t k_width = 120;
@@ -20,9 +22,25 @@ bool on_update(double delta_time) {
 }
 
 void on_draw(asciilibur::FrameBuffer& buffer) {
+
+
     // Draw something into the frame buffer
     buffer.draw(asciilibur::Char::SMILE_LIGHT, 10, 10);
     buffer.draw(asciilibur::Char::SMILE_DARK, 11, 10);
+
+    const char* test_sprite_1 = " o \n"
+                                "/|\\\n"
+                                "/ \\";
+
+    buffer.draw_sprite(test_sprite_1, 12, 10);
+
+    std::vector<uint8_t> test_sprite_2 = {
+        32,     1,      32,     10,
+        47,     124,    92,     10,
+        47,     32,     92,     0,
+    };
+
+    buffer.draw_sprite(test_sprite_2.data(), test_sprite_2.size(), 20, 10);
 }
 
 int main() {
