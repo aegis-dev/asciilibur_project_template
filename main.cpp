@@ -1,21 +1,15 @@
 ﻿
 #include <windows.h>
 #include <cstdint>
-#include <sys/timeb.h>
 
 #include "asciilibur.hpp"
 
 constexpr const uint8_t k_width = 120;
 constexpr const uint8_t k_height = 30;
 
-uint64_t system_current_time_millis() {
-    struct _timeb timebuffer;
-    _ftime(&timebuffer);
-    return static_cast<uint64_t>((timebuffer.time * 1000) + timebuffer.millitm);
-}
-
 bool on_update(double delta_time) {
-    if (GetAsyncKeyState(VK_ESCAPE)) {
+    // TODO: defined cross-platform keycodes
+    if (asciilibur::input::get_key_state(VK_ESCAPE)) {
         // Quit game
         return false;
     }
@@ -36,11 +30,11 @@ int main() {
     asciilibur::FrameBuffer buffer(k_width, k_height);
 
     bool should_run = true;
-    uint64_t last_time = system_current_time_millis();
+    uint64_t last_time = asciilibur::time::get_time();
 
     while (should_run) {
         // Get delta time
-        uint64_t time_now = system_current_time_millis();
+        uint64_t time_now = asciilibur::time::get_time();
         uint64_t diff = time_now - last_time;
         double delta_time = static_cast<double>(time_now - last_time) / 1000.0f;
         last_time = time_now;
